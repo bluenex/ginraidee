@@ -28,20 +28,44 @@ document.addEventListener('click', () => {
   });
 }, false);
 
-window.onload = function(){
+// dropdown trigger 
+const dropdownContents = document.getElementsByClassName('dropdown-content');
+const groupDropdownContent = dropdownContents[0];
+const itemsDropdownContent = dropdownContents[1];
+
+// -- functions
+function init() {
   const title1 = document.getElementsByClassName('dropdown-trigger');
-  // this is title
+  // this is title (dropdown parent)
   title1[0].childNodes[1].childNodes[1].innerHTML = "ที่ไหนก็ได้"
 
-  const items = document.getElementsByClassName('dropdown-content');
+  // this is items part
+  // const items = document.getElementsByClassName('dropdown-content');
   // console.log(title1[0].childNodes[1].childNodes[1].innerHTML);
+  
+  // remove default values
+  removeItems(groupDropdownContent);
 
-  // items[0].children.forEach(function(element) {
-  //   console.log(element)
-  // }, this);
+  // add items to dropdown
+  // since this is default, we will concat all list together as ALL
+  // get all keys
+  allAreaKeys = Object.keys(foodshopList);
+  tmp = [];
 
-  for (i = 0; i< items[0].childNodes.length; i++) {
-    tmp = items[0].childNodes[i]
+  // mix all shops in list
+  for (i=0; i< allAreaKeys.length; i++) {
+    tmp.push(foodshopList[allAreaKeys[i]]);
+    console.log(tmp);
+  }
+
+  // add list to dropdown
+  addGroups(groupDropdownContent, allAreaKeys)
+}
+
+// -- helper functions
+function removeItems(dropdownParent) {
+  for (i = 0; i< dropdownParent.childNodes.length; i++) {
+    tmp1 = dropdownParent.childNodes[i]
     // console.log(tmp)
     
     // to change innerHTML of dropdown item
@@ -49,39 +73,105 @@ window.onload = function(){
     //   // console.log(tmp.childNodes[1].innerHTML = "ทดสอบ " + i);
     // }
 
-    if (tmp.className == 'dropdown-item' || tmp.className == 'dropdown-divider') {
-      items[0].removeChild(tmp)
+    if (tmp1.className == 'dropdown-item' || tmp1.className == 'dropdown-divider') {
+      dropdownParent.removeChild(tmp1)
     }
 
     // to remove child of dropdown content (all of dropdown items)
     // items[0].removeChild(tmp)
 
   }
+}
 
-  for (i = 0; i < foodshopList.infront.length; i++) {
+function addGroups(dropdownParent, arrayToAdd) {
+  for (i = 0; i < arrayToAdd.length; i++) {
     // create node first
+    // start from innermost <p>
     const textNode = document.createElement("p");
-    textNode.innerHTML = foodshopList.infront[i]
-  
-    const divNode = document.createElement("div")
-  
+    // add text get from array
+    textNode.innerHTML = arrayToAdd[i]
+    // create <div> to wrap <p>
+    const divNode = document.createElement("a")
+    // set class name for <div>
     divNode.className = "dropdown-item";
-  
+    divNode.onclick = ()=>{
+      // call select group function
+      selectingGroup(textNode.innerHTML);
+    }
+    // put <p> into <div>
     divNode.appendChild(textNode)
 
     // append node to items
-    items[0].appendChild(divNode)
-    if (i < foodshopList.infront.length - 1) {
+    dropdownParent.appendChild(divNode)
+
+    // if this is not last element of array, put line as separator
+    if (i < arrayToAdd.length - 1) {
       const hrNode = document.createElement("hr")
       hrNode.className = "dropdown-divider"
 
-      items[0].appendChild(hrNode)
+      dropdownParent.appendChild(hrNode)
     }
 
   //   <div class="dropdown-item">
   //   <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
   // </div>
   }
+}
+
+function selectingGroup(groupSelected) {
+  removeItems(itemsDropdownContent);
+  addItems(itemsDropdownContent, foodshopList[groupSelected]);
+  console.log(foodshopList[groupSelected]);
+
+}
+
+function addItems(dropdownParent, arrayToAdd) {
+  for (i = 0; i < arrayToAdd.length; i++) {
+    // create node first
+    // start from innermost <p>
+    const textNode = document.createElement("p");
+    // add text get from array
+    textNode.innerHTML = arrayToAdd[i]
+    // create <div> to wrap <p>
+    const divNode = document.createElement("div")
+    // set class name for <div>
+    divNode.className = "dropdown-item";
+    // put <p> into <div>
+    divNode.appendChild(textNode)
+
+    // append node to items
+    dropdownParent.appendChild(divNode)
+
+    // if this is not last element of array, put line as separator
+    if (i < arrayToAdd.length - 1) {
+      const hrNode = document.createElement("hr")
+      hrNode.className = "dropdown-divider"
+
+      dropdownParent.appendChild(hrNode)
+    }
+
+  //   <div class="dropdown-item">
+  //   <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
+  // </div>
+  }
+}
+
+
+
+
+// after window is loaded
+window.onload = function(){
+  init();
+
+  
+
+  // items[0].children.forEach(function(element) {
+  //   console.log(element)
+  // }, this);
+
+  
+
+  
 
   
 
