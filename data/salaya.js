@@ -35,3 +35,25 @@ const foodshopList = {
   ],
 }
 
+function getAreaList() {
+  return Object.keys(foodshopList);
+}
+
+function getShopsList(areaKey) {
+  if (areaKey === 'ที่ไหนก็ได้') {
+    // since this is default, we will concat all list together as ALL
+    allAreaKeys = Object.keys(foodshopList);
+    tmp = [];
+  
+    // mix all shops in list
+    for (i=0; i< allAreaKeys.length; i++) {
+      foodshopList[allAreaKeys[i]].forEach(function(element) {
+        tmp.push(element);  
+      }, this); 
+    }
+  
+    return tmp;
+  } else {
+    return foodshopList[areaKey];
+  }
+}

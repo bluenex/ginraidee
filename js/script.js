@@ -46,20 +46,20 @@ function init() {
   // remove default values
   removeItems(groupDropdownContent);
 
-  // add items to dropdown
-  // since this is default, we will concat all list together as ALL
-  // get all keys
-  allAreaKeys = Object.keys(foodshopList);
-  tmp = [];
+  // // add items to dropdown
+  // // since this is default, we will concat all list together as ALL
+  // // get all keys
+  // allAreaKeys = Object.keys(foodshopList);
+  // tmp = [];
 
-  // mix all shops in list
-  for (i=0; i< allAreaKeys.length; i++) {
-    tmp.push(foodshopList[allAreaKeys[i]]);
-    console.log(tmp);
-  }
+  // // mix all shops in list
+  // for (i=0; i< allAreaKeys.length; i++) {
+  //   tmp.push(foodshopList[allAreaKeys[i]]);
+  //   console.log(tmp);
+  // }
 
   // add list to dropdown
-  addGroups(groupDropdownContent, allAreaKeys)
+  addGroups(groupDropdownContent, getAreaList())
 }
 
 // -- helper functions
@@ -120,8 +120,8 @@ function addGroups(dropdownParent, arrayToAdd) {
 
 function selectingGroup(groupSelected) {
   removeItems(itemsDropdownContent);
-  addItems(itemsDropdownContent, foodshopList[groupSelected]);
-  console.log(foodshopList[groupSelected]);
+  addItems(itemsDropdownContent, getShopsList(groupSelected));
+  console.log(getShopsList(groupSelected));
 
 }
 
