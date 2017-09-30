@@ -55,6 +55,10 @@ $('.area-item').click((e) => {
 
 // click on random button
 $('#rand-button').click((e) => {
+  // also clear last result when re-random
+  $('.rand-result').text('-');
+  $('.result-area').removeClass('rand-final-result');
+
   // randomly show text 15 times, the last one is result
   for (var i = 1; i <= 15; ++i) {
     (function () {
