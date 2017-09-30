@@ -36,7 +36,9 @@ const foodshopList = {
 }
 
 function getAreaList() {
-  return Object.keys(foodshopList);
+  ar = Object.keys(foodshopList)
+  ar.unshift('ที่ไหนก็ได้')
+  return ar
 }
 
 function getShopsList(areaKey) {

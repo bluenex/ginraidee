@@ -1,112 +1,92 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>กินไรดี</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+    crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css" rel="stylesheet"> -->
 </head>
+
 <body>
-  <section class="hero is-fullheight is-dark is-bold">
-    <div class="hero-body">
-      <div class="container">
-        <div class="columns is-vcentered">
-          <div class="column is-4 is-offset-4">
-            <h1 class="title">
-              ศาลายา
-            </h1>
-            <div class="box">
-              <label class="label">เลือกย่านก่อน</label>
-              
+  <div class="container">
 
-              <div id="group-dropdown" class="dropdown">
-                  <div class="dropdown-trigger">
-                    <button id="group-button" class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu2">
-                      <span>ทั้งหมด</span>
-                      <span class="icon is-small">
-                        <i class="fa fa-angle-down" aria-hidden="true"></i>
-                      </span>
-                    </button>
-                  </div>
-                  <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-                    <div class="dropdown-content">
-                      <div class="dropdown-item">
-                        <p>ร้าน 1</p>
-                      </div>
-                      <hr class="dropdown-divider">
-                      <div class="dropdown-item">
-                        <p>ร้าน 2</p>
-                      </div>
-                      <hr class="dropdown-divider">
-                      <div class="dropdown-item">
-                        <p>ร้าน 3</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    <div class="main-box col-md-4 mx-auto">
+      <!-- choose area -->
+      <h4>เลือกย่านก่อน</h4>
 
-<br><br>
+      <div id="test" class="dropdown">
+        <button id="area-button" class="btn btn-block btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+              ที่ไหนก็ได้
+            </button>
+        <div id="area-list" class="dropdown-menu btn-block" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
 
-              <label class="label">เช็ครายชื่อร้าน</label>
+      <br>
 
+      <!-- check shop -->
+      <h4>กดดูรายชื่อร้าน</h4>
+      <div class="dropdown">
+        <button id="shop-button" class="btn btn-block btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          รายชื่อร้าน
+        </button>
+        <div id="shop-list" class="dropdown-menu btn-block" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-item">Action</div>
+          <div class="dropdown-item">Another action</div>
+          <div class="dropdown-item">Something else here</div>
+        </div>
+      </div>
 
-              <div id="items-dropdown" class="dropdown">
-                  <div class="dropdown-trigger">
-                    <button id="items-button" class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu2">
-                      <span>Content</span>
-                      <span class="icon is-small">
-                        <i class="fa fa-angle-down" aria-hidden="true"></i>
-                      </span>
-                    </button>
-                  </div>
-                  <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-                    <div class="dropdown-content">
-                      <div class="dropdown-item">
-                        <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
-                      </div>
-                      <hr class="dropdown-divider">
-                      <div class="dropdown-item">
-                        <p>You simply need to use a <code>&lt;div&gt;</code> instead.</p>
-                      </div>
-                      <hr class="dropdown-divider">
-                      <a href="#" class="dropdown-item">
-                        This is a link
-                      </a>
-                    </div>
-                  </div>
-                </div>
+      <br>
+      <hr>
+      <br>
 
-<br><br>
-              
-              <p class="control">
-                <button class="button is-primary">สุ่มเลย</button>
-              </p>
+      <!-- random button -->
+      <button type="button" id="rand-button" class="btn btn-primary btn-block">สุ่มเลย</button>
 
-<br>
+      <br>
 
-              <div class="message-header">
-                  <p>กินนี่นะ</p>
-                </div>
-                <div class="message-body">
-                  ข้าวมันไก่
-                </div>
-            </div>
-            <p class="has-text-centered">
-              Example
-            </p>
-          </div>
+      <!-- result -->
+      <div class="card" style="width: auto">
+        <div class="card-header">
+          กินนี่นะ
+        </div>
+        <div class="result-area card-body">
+          <p class="rand-result card-text">-</p>
         </div>
       </div>
     </div>
+  </div>
 
-  </section>
-
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+    crossorigin="anonymous"></script>
+  <!-- custom js -->
   <script type="text/javascript" src="data/salaya.js"></script>
-  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="js/bs_script.js"></script>
+  <!-- <script type="text/javascript" src="js/script.js"></script> -->
 </body>
-</html>
 
+</html>
