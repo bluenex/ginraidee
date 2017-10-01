@@ -55,8 +55,11 @@ $('.area-item').click((e) => {
 
 // click on random button
 $('#rand-button').click((e) => {
-  // also clear last result when re-random
-  $('.rand-result').text('-');
+  // disable button to not allow repetitive click
+  $('#rand-button').prop('disabled', true)
+
+  // also clear last result when re-random, this is &nbsp; in html called non breaking space
+  $('.rand-result').text('\xa0');
   $('.result-area').removeClass('rand-final-result');
 
   // randomly show text 15 times, the last one is result
@@ -70,7 +73,9 @@ $('#rand-button').click((e) => {
       // change decoration
       setTimeout(() => {
         $('.result-area').addClass('rand-final-result');
-      }, 16*125);
+        // re-enable button
+        $('#rand-button').prop('disabled', false)
+      }, 16 * 125);
     })(i);
   }
 });
